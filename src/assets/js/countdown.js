@@ -57,7 +57,6 @@ const togglePlay = () => {
 const updateStats = () => {
     $.get('https://api.livida.net/api/radio/keyfm', (res) => {
         const {
-            listeners,
             dj,
             song
         } = res.data;
@@ -90,7 +89,6 @@ const updateStats = () => {
             };
         };
         window.prevSongText = songText;
-        $('.listeners').text(`${listeners} Listener${listeners == 1 ? '' : 's'}`);
     })
     .fail((err) => {
         console.error(`Error whilst fetching song metadata:`, err);
