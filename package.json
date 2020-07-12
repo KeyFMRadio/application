@@ -1,0 +1,39 @@
+{
+  "name": "keyfm",
+  "productName": "keyfm",
+  "version": "0.0.1",
+  "description": "An application for KeyFM.net!",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish"
+  },
+  "author": "KeyFM",
+  "config": {
+    "forge": "./forge.config.js"
+  },
+  "dependencies": {
+    "discord-rich-presence": "0.0.8",
+    "electron-squirrel-startup": "^1.0.0"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.50",
+    "@electron-forge/maker-deb": "^6.0.0-beta.50",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.50",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.50",
+    "@electron-forge/maker-zip": "^6.0.0-beta.50",
+    "@electron-forge/publisher-github": "^6.0.0-beta.50",
+    "electron": "8.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KeyFMRadio/application.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KeyFMRadio/application/issues"
+  },
+  "homepage": "https://github.com/KeyFMRadio/application#readme",
+  "license": "ISC"
+}
