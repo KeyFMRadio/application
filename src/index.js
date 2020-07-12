@@ -76,8 +76,8 @@ const updateSong = async () => {
   try {
     const { data } = await (await fetch('https://api.livida.net/api/radio/keyfm')).json();
     client.updatePresence({
-      details: `Listening to KeyFM`,
-      state: `${data.song.name} by ${data.song.artist}`,
+      details: `🎵 | ${data.song.name} by ${data.song.artist}`,
+      state: `🎙️ | ${data.dj}`,
       largeImageKey: 'keyfm',
       largeImageText: 'keyfm.net',
       instance: true,
@@ -89,4 +89,4 @@ const updateSong = async () => {
 };
 
 updateSong();
-setInterval(updateSong, 5000);
+setInterval(updateSong, 10000);
