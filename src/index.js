@@ -2,7 +2,7 @@ const { app, BrowserWindow, autoUpdater, dialog } = require('electron');
 const shell = require('electron').shell;
 const fetch = require('node-fetch');
 const client = require('discord-rich-presence')('701157425318854756');
-const server = 'https://hazel-gilt.now.sh';
+const server = 'https://hazel-key.vercel.app';
 const feed = `${server}/update/${process.platform}/${app.getVersion()}`;
 const time = Math.floor(Date.now() / 1000);
 
