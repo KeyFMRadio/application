@@ -317,3 +317,8 @@ input[type=range][orient=vertical] {
     float:right;
     margin-right: 25px;
 }
+
+#video {
+    background-color: #101319;
+    border: none;
+}

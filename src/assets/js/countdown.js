@@ -55,17 +55,17 @@ const togglePlay = () => {
 
 
 const updateStats = () => {
-    $.get('https://api.livida.net/api/radio/keyfm', (res) => {
+    $.get('https://api.keyfm.net/stats', (res) => {
         const {
-            dj,
-            song
-        } = res.data;
-        fetchJsonp('https://api.deezer.com/search/track/autocomplete?limit=1&q=' + song.name + ` ${song.artist}` + '&output=jsonp')
+            currentDJ,
+            playing
+        } = res;
+        fetchJsonp('https://api.deezer.com/search/track/autocomplete?limit=1&q=' + playing.song + ` ${playing.artist}` + '&output=jsonp')
         .then(res => res.json())
         .then(res => {
             if (res.data[0]) {
-                $('.song-art').attr('src', res.data[0].album.cover || `./assets/img/KeyFM.png`);
-                $('.artist-image').attr('src', res.data[0].artist.picture || `./assets/img/KeyFM.png`);
+                $('.song-art').attr('src', `https://staff.keyfm.net/profilePictures/${currentDJ.avatar}` || `./assets/img/KeyFM.png`);
+                $('.artist-image').attr('src', res.data[0].album.cover || `./assets/img/KeyFM.png`);
             } else {
                 $('.song-art').attr('src', `./assets/img/KeyFM.png`);
                 $('.artist-image').attr('src', `./assets/img/KeyFM.png`);
@@ -76,10 +76,10 @@ const updateStats = () => {
             $('.song-art').attr('src', `./assets/img/KeyFM.png`);
             $('.artist-image').attr('src', `./assets/img/KeyFM.png`);
         });
-        $('.song-title').text(song.name);
-        $('.song-artist').text(song.artist);
-        $('.dj-name').text(dj);
-        const songText = `${song.name} by ${song.artist}`;
+        $('.song-title').text(playing.song);
+        $('.song-artist').text(playing.artist);
+        $('.dj-name').text(playing.autoDJ ? 'Auto DJ' : currentDJ.username);
+        const songText = `${playing.song} by ${playing.artist}`;
         if (window.prevSongText != songText) {
             $('.song-text').text(songText);
             if ($('.song-text').parent().prop('scrollHeight') > $('.song-text').parent().height() + 16) {
