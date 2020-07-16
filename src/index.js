@@ -1,10 +1,11 @@
-const { app, BrowserWindow, autoUpdater, dialog } = require('electron');
+const { app, BrowserWindow, autoUpdater, dialog, Menu, Tray } = require('electron');
 const shell = require('electron').shell;
 const fetch = require('node-fetch');
 const client = require('discord-rich-presence')('701157425318854756');
 const server = 'https://hazel-key.vercel.app';
 const feed = `${server}/update/${process.platform}/${app.getVersion()}`;
 const time = Math.floor(Date.now() / 1000);
+const path = require("path");
 
 autoUpdater.setFeedURL(feed);
 
@@ -59,6 +60,32 @@ const createWindow = () => {
 };
 app.on('ready', function () {
   createWindow()
+})
+
+let tray = null
+app.whenReady().then(() => {
+  tray = new Tray(path.join(__dirname, "assets/img/KeyFM.png"));
+  tray.setToolTip("KeyFM");
+  tray.on("click", function(){
+      if(mainWindow != null){
+          if(mainWindow.isVisible()){
+              mainWindow.focus();
+          }else{
+              mainWindow.show();
+          }
+      }
+  });
+  tray.setContextMenu(Menu.buildFromTemplate([
+      {
+          label: "Quit",
+          type: "normal",
+          click: function(){
+              if(mainWindow != null){
+                  app.quit();
+              }
+          }
+      }
+  ]));
 })
 
 app.on('window-all-closed', () => {
