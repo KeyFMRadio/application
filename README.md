@@ -2,6 +2,8 @@
 
 # KeyFM Application
 
+##Archice Notice
+This repository & application is now Archived. It will not be maintained, updated, advertised or support given for the application.
 
 # Download
 For now this application is only on Windows 64 bit, you can download it below. 
