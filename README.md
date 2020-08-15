@@ -2,7 +2,7 @@
 
 # KeyFM Application
 
-##Archice Notice
+## Archice Notice
 This repository & application is now Archived. It will not be maintained, updated, advertised or support given for the application.
 
 # Download
